@@ -1,7 +1,7 @@
-#include "Lua/ScriptCommands/Rendering/CanvasScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Rendering/CanvasScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Rendering/Canvas.h"
+#include "sol/sol.hpp"
 
 #include "Deserialization/ViewportDeserializers.h"
 
@@ -17,11 +17,12 @@ namespace sol
 namespace Celeste::Lua::Rendering::CanvasScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using Canvas = Celeste::Rendering::Canvas;
 
     registerUserType<Canvas>(
+      state,
       Canvas::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>());
   }

@@ -1,6 +1,5 @@
-#include "Lua/ScriptCommands/Settings/GameSettingsScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Settings/GameSettingsScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Settings/GameSettings.h"
 
@@ -30,9 +29,10 @@ namespace Celeste::Lua::Settings::GameSettingsScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerScriptableObjectUserType<GameSettings>(
+      state,
       "GameSettings",
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "apply", &Internals::apply,

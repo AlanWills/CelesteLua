@@ -1,6 +1,5 @@
-#include "Lua/ScriptCommands/Audio/AudioSourceScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Audio/AudioSourceScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Audio/AudioSource.h"
 #include "Deserialization/AudioDeserializers.h"
@@ -52,11 +51,12 @@ namespace Celeste::Lua::Audio::AudioSourceScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using AudioSource = Celeste::Audio::AudioSource;
 
     registerUserType<AudioSource>(
+      state,
       AudioSource::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "getSound", &AudioSource::getSound,

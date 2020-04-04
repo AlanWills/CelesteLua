@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Data/PrefabScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Data/PrefabScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Data/Prefab.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::PrefabScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Prefab>(
+      state,
       "Prefab",
       sol::base_classes, sol::bases<Celeste::Resources::Resource, Object>(),
       "instantiate", &Prefab::instantiate);

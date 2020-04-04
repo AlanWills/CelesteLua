@@ -1,17 +1,17 @@
-#include "Lua/ScriptCommands/Input/InputScriptCommands.h"
-#include "Lua/ScriptCommands/Input/KeyboardActivatorScriptCommands.h"
-#include "Lua/ScriptCommands/Input/KeyboardVisibilityScriptCommands.h"
-#include "Lua/ScriptCommands/Input/MouseInteractionHandlerScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Input/InputScriptCommands.h"
+#include "ScriptCommands/Input/KeyboardActivatorScriptCommands.h"
+#include "ScriptCommands/Input/KeyboardVisibilityScriptCommands.h"
+#include "ScriptCommands/Input/MouseInteractionHandlerScriptCommands.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Input::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    KeyboardActivatorScriptCommands::initialize();
-    KeyboardVisibilityScriptCommands::initialize();
-    MouseInteractionHandlerScriptCommands::initialize();
+    KeyboardActivatorScriptCommands::initialize(state);
+    KeyboardVisibilityScriptCommands::initialize(state);
+    MouseInteractionHandlerScriptCommands::initialize(state);
   }
 }

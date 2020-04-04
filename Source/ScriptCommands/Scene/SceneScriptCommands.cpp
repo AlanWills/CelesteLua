@@ -1,6 +1,7 @@
-#include "Lua/ScriptCommands/Scene/SceneScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Scene/SceneScriptCommands.h"
 #include "Scene/SceneLoader.h"
+#include "FileSystem/Path.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Scene::ScriptCommands
@@ -15,9 +16,8 @@ namespace Celeste::Lua::Scene::ScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Celeste::Lua::LuaState::instance();
     state.create_named_table(
       "Scene", 
       "load", sol::factories(Internals::load));

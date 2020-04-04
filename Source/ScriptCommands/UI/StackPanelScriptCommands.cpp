@@ -1,6 +1,7 @@
-#include "Lua/ScriptCommands/UI/StackPanelScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/UI/StackPanelScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "UI/StackPanel.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -27,11 +28,12 @@ namespace Celeste::Lua::UI::StackPanelScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using StackPanel = Celeste::UI::StackPanel;
 
     registerUserType<StackPanel>(
+      state,
       StackPanel::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "addChild", &Internals::addChild,

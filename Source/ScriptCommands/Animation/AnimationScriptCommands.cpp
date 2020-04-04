@@ -1,13 +1,12 @@
-#include "Lua/ScriptCommands/Animation/AnimationScriptCommands.h"
-#include "Lua/ScriptCommands/Animation/AnimatorScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Animation/AnimationScriptCommands.h"
+#include "ScriptCommands/Animation/AnimatorScriptCommands.h"
 
 
 namespace Celeste::Lua::Animation::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    Animation::AnimatorScriptCommands::initialize();
+    Animation::AnimatorScriptCommands::initialize(state);
   }
 }

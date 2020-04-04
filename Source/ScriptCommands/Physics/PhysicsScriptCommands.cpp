@@ -1,13 +1,13 @@
-#include "Lua/ScriptCommands/Physics/PhysicsScriptCommands.h"
-#include "Lua/ScriptCommands/Physics/EllipseColliderScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Physics/PhysicsScriptCommands.h"
+#include "ScriptCommands/Physics/EllipseColliderScriptCommands.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Physics::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    EllipseColliderScriptCommands::initialize();
+    EllipseColliderScriptCommands::initialize(state);
   }
 }

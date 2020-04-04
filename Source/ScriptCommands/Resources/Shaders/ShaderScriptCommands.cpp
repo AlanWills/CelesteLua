@@ -1,14 +1,14 @@
-#include "Lua/ScriptCommands/Resources/Shaders/ShaderScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Shaders/VertexShaderScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Shaders/FragmentShaderScriptCommands.h"
+#include "ScriptCommands/Resources/Shaders/ShaderScriptCommands.h"
+#include "ScriptCommands/Resources/Shaders/VertexShaderScriptCommands.h"
+#include "ScriptCommands/Resources/Shaders/FragmentShaderScriptCommands.h"
 
 
 namespace Celeste::Lua::Resources::ShaderScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    VertexShaderScriptCommands::initialize();
-    FragmentShaderScriptCommands::initialize();
+    VertexShaderScriptCommands::initialize(state);
+    FragmentShaderScriptCommands::initialize(state);
   }
 }

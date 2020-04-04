@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Input/KeyboardVisibilityScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Input/KeyboardVisibilityScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Deserialization/InputDeserializers.h"
 #include "Serialization/InputSerializers.h"
@@ -89,11 +89,12 @@ namespace Celeste::Lua::Input::KeyboardVisibilityScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using KeyboardVisibility = Celeste::Input::KeyboardVisibility;
 
     registerUserType<KeyboardVisibility>(
+      state,
       "KeyboardVisibility",
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "getVisibilityKey", &Internals::getVisibilityKey,

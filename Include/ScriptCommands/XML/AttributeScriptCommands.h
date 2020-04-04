@@ -1,9 +1,13 @@
 #pragma once
 
-#include "CelesteDllExport.h"
 #include "Templates/ChooseClass.h"
 #include "XML/Attributes/DataAttribute.h"
 
+
+namespace sol
+{
+  class state;
+}
 
 namespace Celeste::Lua::XML::AttributeScriptCommands
 {
@@ -20,5 +24,5 @@ namespace Celeste::Lua::XML::AttributeScriptCommands
     return reinterpret_cast<typename Celeste::XML::DataAttribute<T, is_reference>&>(attribute).getValue();
   }
 
-  CelesteDllExport void initialize();
+  void initialize(sol::state& state);
 }

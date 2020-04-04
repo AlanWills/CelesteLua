@@ -1,7 +1,10 @@
 #pragma once
 
-#include "CelesteDllExport.h"
 
+namespace sol
+{
+  class state;
+}
 
 namespace Celeste
 {
@@ -12,6 +15,6 @@ namespace Celeste
 
   namespace Lua::Animation::AnimatorScriptCommands
   {
-    CelesteDllExport void initialize();
+    void initialize(sol::state& state);
   }
 }

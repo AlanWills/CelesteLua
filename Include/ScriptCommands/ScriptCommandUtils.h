@@ -1,11 +1,9 @@
 #pragma once
 
-#include "CelesteDllExport.h"
-
 #include "Objects/ScriptableObject.h"
 #include "Objects/Object.h"
 
-#include "Lua/LuaState.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua
@@ -21,9 +19,9 @@ namespace Celeste::Lua
 
     //------------------------------------------------------------------------------------------------
     template <typename T>
-    sol::object as(T* object, const std::string& typeName)
+    sol::object as(sol::state& state, T* object, const std::string& typeName)
     {
-      sol::table typeTable = Lua::LuaState::instance()[typeName].get_or<sol::table>(sol::nil);
+      sol::table typeTable = state[typeName].get_or<sol::table>(sol::nil);
       if (!typeTable.valid())
       {
         return sol::nil;
@@ -104,9 +102,8 @@ namespace Celeste::Lua
 
   //------------------------------------------------------------------------------------------------
   template <typename Class, typename... Args>
-  void registerUserType(const std::string& name, Args&& ... args)
+  void registerUserType(sol::state& state, const std::string& name, Args&& ... args)
   {
-    sol::state& state = LuaState::instance();
     ASSERT(!state[name].valid());
 
     if (!state[name].valid())
@@ -121,9 +118,8 @@ namespace Celeste::Lua
 
   //------------------------------------------------------------------------------------------------
   template <typename Class, typename... Args>
-  void registerScriptableObjectUserType(const std::string& name, Args&& ... args)
+  void registerScriptableObjectUserType(sol::state& state, const std::string& name, Args&& ... args)
   {
-    sol::state& state = LuaState::instance();
     ASSERT(!state[name].valid());
     
     if (!state[name].valid())

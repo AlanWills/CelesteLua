@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Fonts/FontScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Fonts/FontScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Fonts/Font.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::FontScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Font>(
+      state,
       "Font",
       sol::base_classes, sol::bases<Celeste::Resources::Resource, Object>());
   }

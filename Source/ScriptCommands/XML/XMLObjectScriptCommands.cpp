@@ -1,7 +1,6 @@
-#include "Lua/ScriptCommands/XML/XMLObjectScriptCommands.h"
-#include "Lua/LuaState.h"
-
+#include "ScriptCommands/XML/XMLObjectScriptCommands.h"
 #include "XML/XMLObject.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -13,10 +12,8 @@ namespace sol
 namespace Celeste::Lua::XML::XMLObjectScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     using XMLObject = Celeste::XML::XMLObject;
 
     state.new_usertype<XMLObject>(

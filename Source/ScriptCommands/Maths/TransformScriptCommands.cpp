@@ -1,7 +1,7 @@
-#include "Lua/ScriptCommands/Maths/TransformScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-
+#include "ScriptCommands/Maths/TransformScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Maths/Transform.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -28,9 +28,10 @@ namespace Celeste::Lua::Maths::TransformScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Transform>(
+      state,
       Transform::type_name(),
       sol::base_classes, sol::bases<Object>(),
       "getWorldTranslation", &Transform::getWorldTranslation,

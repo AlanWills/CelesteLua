@@ -1,6 +1,7 @@
-#include "Lua/ScriptCommands/Rendering/SpriteRendererScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Rendering/SpriteRendererScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Rendering/SpriteRenderer.h"
+#include "sol/sol.hpp"
 
 using SpriteRenderer = Celeste::Rendering::SpriteRenderer;
 
@@ -35,9 +36,10 @@ namespace Celeste::Lua::Rendering::SpriteRendererScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<SpriteRenderer>(
+      state,
       SpriteRenderer::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "setTexture", sol::overload(&Internals::setTexture_HandleOverload, &Internals::setTexture_StringOverload),

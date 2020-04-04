@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/XML/AttributeScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/XML/AttributeScriptCommands.h"
+#include "sol/sol.hpp"
 
 // DON'T delete these
 #include "Deserialization/MathsDeserializers.h"
@@ -15,10 +15,8 @@ namespace sol
 namespace Celeste::Lua::XML::AttributeScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     using Attribute = Celeste::XML::Attribute;
 
     state.new_usertype<Attribute>(

@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Data/DataScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Data/DataScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Data/Data.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::DataScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Data>(
+      state,
       "Data",
       sol::base_classes, sol::bases<Celeste::Resources::Resource, Object>());
   }

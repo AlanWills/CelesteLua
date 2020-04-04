@@ -1,23 +1,23 @@
-#include "Lua/ScriptCommands/Objects/ObjectScriptCommands.h"
-#include "Lua/ScriptCommands/Objects/EntityScriptCommands.h"
-#include "Lua/ScriptCommands/Objects/ScriptableObjectScriptCommands.h"
-#include "Lua/ScriptCommands/Objects/ComponentScriptCommands.h"
-#include "Lua/ScriptCommands/Objects/GameObjectScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-
+#include "ScriptCommands/Objects/ObjectScriptCommands.h"
+#include "ScriptCommands/Objects/EntityScriptCommands.h"
+#include "ScriptCommands/Objects/ScriptableObjectScriptCommands.h"
+#include "ScriptCommands/Objects/ComponentScriptCommands.h"
+#include "ScriptCommands/Objects/GameObjectScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Objects/Object.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Objects::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    registerUserType<Object>("Object");
+    registerUserType<Object>(state, "Object");
 
-    ScriptableObjectScriptCommands::initialize();
-    EntityScriptCommands::initialize();
-    ComponentScriptCommands::initialize();
-    GameObjectScriptCommands::initialize();
+    ScriptableObjectScriptCommands::initialize(state);
+    EntityScriptCommands::initialize(state);
+    ComponentScriptCommands::initialize(state);
+    GameObjectScriptCommands::initialize(state);
   }
 }

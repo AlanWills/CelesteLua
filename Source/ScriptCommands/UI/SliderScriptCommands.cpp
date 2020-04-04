@@ -1,6 +1,7 @@
-#include "Lua/ScriptCommands/UI/SliderScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/UI/SliderScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "UI/Slider.h"
+#include "sol/sol.hpp"
 
 using namespace Celeste::UI;
 
@@ -27,9 +28,10 @@ namespace Celeste::Lua::UI::SliderScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Slider>(
+      state,
       Slider::type_name(),
       sol::base_classes, sol::bases<Celeste::Component, Celeste::Entity, Celeste::Object>(),
       "setCurrentValue", &Slider::setCurrentValue,

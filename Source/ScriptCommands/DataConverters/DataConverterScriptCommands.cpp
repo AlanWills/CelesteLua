@@ -1,9 +1,9 @@
-#include "Lua/ScriptCommands/DataConverters/DataConverterScriptCommands.h"
-#include "Lua/ScriptCommands/DataConverters/Objects/ComponentDataConverterScriptCommands.h"
-#include "Lua/ScriptCommands/DataConverters/LuaComponentDataConverterScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/DataConverters/DataConverterScriptCommands.h"
+#include "ScriptCommands/DataConverters/Objects/ComponentDataConverterScriptCommands.h"
+#include "ScriptCommands/DataConverters/LuaComponentDataConverterScriptCommands.h"
 
 #include "DataConverters/DataConverter.h"
+#include "Lua/LuaState.h"
 
 using DataConverter = Celeste::DataConverter;
 
@@ -38,18 +38,16 @@ namespace Celeste::Lua::DataConverters::ScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     state.new_usertype<DataConverter>(
       "DataConverter",
       "findAttribute", &Internals::findAttribute,
       "findElement", &Internals::findElement,
       "convertFromXML", sol::overload(&Internals::convertFromXML_StringOverload));
 
-    Objects::ComponentDataConverterScriptCommands::initialize();
-    LuaComponentDataConverterScriptCommands::initialize();
+    Objects::ComponentDataConverterScriptCommands::initialize(state);
+    LuaComponentDataConverterScriptCommands::initialize(state);
 
     // Initialize the lua data converter scripts
     LuaState::requireModule("DataConverters.DataConverters");

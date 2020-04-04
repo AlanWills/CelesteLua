@@ -1,14 +1,13 @@
-#include "Lua/ScriptCommands/Lua/Components/LuaComponentManifestRegistryScriptCommands.h"
+#include "ScriptCommands/Lua/Components/LuaComponentManifestRegistryScriptCommands.h"
 #include "Lua/Components/LuaComponentManifestRegistry.h"
-#include "Lua/LuaState.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::LuaComponentManifestRegistryScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = LuaState::instance();
     state.set_function("registerComponent", &Celeste::Lua::LuaComponentManifestRegistry::registerComponent);
   }
 }

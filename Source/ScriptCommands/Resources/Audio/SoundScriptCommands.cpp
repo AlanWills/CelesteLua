@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Audio/SoundScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Audio/SoundScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Audio/Sound.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::Audio::SoundScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Sound>(
+      state,
       "Sound",
       sol::base_classes, sol::bases<Celeste::Resources::Resource, Object>());
   }

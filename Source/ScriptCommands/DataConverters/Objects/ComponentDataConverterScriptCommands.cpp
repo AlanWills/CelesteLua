@@ -1,8 +1,6 @@
-#include "Lua/ScriptCommands/DataConverters/Objects/ComponentDataConverterScriptCommands.h"
-#include "Lua/LuaState.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
-
+#include "ScriptCommands/DataConverters/Objects/ComponentDataConverterScriptCommands.h"
 #include "DataConverters/Objects/ComponentDataConverter.h"
+#include "Lua/LuaState.h"
 
 
 namespace sol
@@ -32,10 +30,8 @@ namespace Celeste::Lua::Objects::ComponentDataConverterScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = LuaState::instance();
-
     state.new_usertype<ComponentDataConverter>(
       "ComponentDataConverter",
       sol::base_classes, sol::bases<EntityDataConverter<Component>, ObjectDataConverter<Component>, DataConverter>(),

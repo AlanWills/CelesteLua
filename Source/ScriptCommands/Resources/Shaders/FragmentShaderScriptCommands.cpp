@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Shaders/FragmentShaderScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Shaders/FragmentShaderScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Shaders/FragmentShader.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::FragmentShaderScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<FragmentShader>(
+      state,
       "FragmentShader",
       sol::base_classes, sol::bases<Celeste::Resources::Shader, Celeste::Resources::Resource, Object>());
   }

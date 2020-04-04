@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Input/MouseInteractionHandlerScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Input/MouseInteractionHandlerScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Input/MouseInteractionHandler.h"
 
@@ -55,9 +55,10 @@ namespace Celeste::Lua::Input::MouseInteractionHandlerScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<MouseInteractionHandler>(
+      state,
       "MouseInteractionHandler",
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "subscribeOnLeftButtonUpCallback", &Internals::subscribeOnLeftButtonClickedCallback,

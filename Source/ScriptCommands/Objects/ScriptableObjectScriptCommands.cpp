@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Objects/ScriptableObjectScriptCommands.h"
-#include "Lua/ScriptCommands/Settings/GameSettingsScriptCommands.h"
-#include "Lua/ScriptCommands/Settings/WindowSettingsScriptCommands.h"
+#include "ScriptCommands/Objects/ScriptableObjectScriptCommands.h"
+#include "ScriptCommands/Settings/GameSettingsScriptCommands.h"
+#include "ScriptCommands/Settings/WindowSettingsScriptCommands.h"
 #include "Lua/LuaState.h"
 
 #include "Settings/GameSettings.h"
@@ -25,15 +25,15 @@ namespace Celeste::Lua::ScriptableObjectScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    Lua::LuaState::instance().new_usertype<ScriptableObject>(
+    state.new_usertype<ScriptableObject>(
       "ScriptableObject",
       "load", sol::factories(&Internals::loadScriptableObject),
       "delete", &Internals::deleteScriptableObject,
       "getName", &ScriptableObject::getName);
 
-    Settings::GameSettingsScriptCommands::initialize();
-    Settings::WindowSettingsScriptCommands::initialize();
+    Settings::GameSettingsScriptCommands::initialize(state);
+    Settings::WindowSettingsScriptCommands::initialize(state);
   }
 }

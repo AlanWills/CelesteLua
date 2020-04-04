@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Audio/AudioScriptCommands.h"
-#include "Lua/ScriptCommands/Audio/AudioSourceScriptCommands.h"
+#include "ScriptCommands/Audio/AudioScriptCommands.h"
+#include "ScriptCommands/Audio/AudioSourceScriptCommands.h"
 #include "Lua/LuaState.h"
 
 #include "Audio/AudioUtils.h"
@@ -9,9 +9,8 @@
 namespace Celeste::Lua::Audio::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = LuaState::instance();
     sol::table audioTable = state.create_named_table("Audio");
 
     // Set up script commands
@@ -24,7 +23,7 @@ namespace Celeste::Lua::Audio::ScriptCommands
     audioTable.set_function("getSFXVolume", &getSFXVolume);
     audioTable.set_function("setSFXVolume", &setSFXVolume);
 
-    AudioSourceScriptCommands::initialize();
+    AudioSourceScriptCommands::initialize(state);
   }
 
   //------------------------------------------------------------------------------------------------

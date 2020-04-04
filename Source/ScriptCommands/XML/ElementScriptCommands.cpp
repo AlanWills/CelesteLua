@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/XML/ElementScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/XML/ElementScriptCommands.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -11,10 +11,8 @@ namespace sol
 namespace Celeste::Lua::XML::ElementScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     using Element = Celeste::XML::Element;
 
     state.new_usertype<Element>(

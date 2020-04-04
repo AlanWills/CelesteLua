@@ -1,13 +1,13 @@
-#include "Lua/ScriptCommands/Events/EventScriptCommands.h"
-#include "Lua/ScriptCommands/Events/EventTriggererScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Events/EventScriptCommands.h"
+#include "ScriptCommands/Events/EventTriggererScriptCommands.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Events::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    EventTriggererScriptCommands::initialize();
+    EventTriggererScriptCommands::initialize(state);
   }
 }

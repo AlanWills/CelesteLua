@@ -1,9 +1,12 @@
 #pragma once
 
-#include "CelesteDllExport.h"
 
+namespace sol
+{
+  class state;
+}
 
 namespace Celeste::Lua::Physics::ScriptCommands
 {
-  CelesteDllExport void initialize();
+  void initialize(sol::state& state);
 }

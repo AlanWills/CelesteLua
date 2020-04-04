@@ -1,7 +1,7 @@
-#include "Lua/ScriptCommands/CoreScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/CoreScriptCommands.h"
 #include "Game/Game.h"
 #include "Debug/Assert.h"
+#include "Lua/LuaState.h"
 
 
 namespace Celeste::Lua::Core::ScriptCommands
@@ -60,10 +60,8 @@ namespace Celeste::Lua::Core::ScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = LuaState::instance();
-
     state.set_function("assert", &Internals::_assert);
     state.set_function("assertFail", &Internals::assertFail);
     state.set_function("assertFailMessage", &Internals::assertFailMessage);

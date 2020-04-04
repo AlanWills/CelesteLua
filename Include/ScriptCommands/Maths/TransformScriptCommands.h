@@ -1,8 +1,12 @@
 #pragma once
 
-#include "CelesteDllExport.h"
 #include "UtilityHeaders/LuaHeaders.h"
 
+
+namespace sol
+{
+  class state;
+}
 
 namespace Celeste
 {
@@ -10,7 +14,7 @@ namespace Celeste
 
   namespace Lua::Maths::TransformScriptCommands
   {
-    CelesteDllExport void initialize();
+    void initialize(sol::state& state);
   }
 }
 

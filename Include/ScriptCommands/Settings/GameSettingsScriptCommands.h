@@ -1,11 +1,14 @@
 #pragma once
 
-#include "CelesteDllExport.h"
-
 #include <string>
 
 
+namespace sol
+{
+  class state;
+}
+
 namespace Celeste::Lua::Settings::GameSettingsScriptCommands
 {
-  CelesteDllExport void initialize();
+  void initialize(sol::state& state);
 }

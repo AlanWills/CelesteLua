@@ -1,15 +1,13 @@
-#include "Lua/ScriptCommands/Maths/VectorScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Maths/VectorScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Maths::VectorScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     // uvec2
     state.new_usertype<glm::uvec2>(
       "uvec2",

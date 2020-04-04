@@ -1,8 +1,7 @@
-#include "Settings/WindowSettings.h"
+#include "ScriptCommands/Settings/WindowSettingsScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
-#include "Lua/ScriptCommands/Settings/WindowSettingsScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "Settings/WindowSettings.h"
 
 #include <memory>
 
@@ -32,9 +31,10 @@ namespace Celeste::Lua::Settings::WindowSettingsScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     Celeste::Lua::registerScriptableObjectUserType<WindowSettings>(
+      state,
       "WindowSettings",
       sol::base_classes, sol::bases<Celeste::ScriptableObject>(),
       "apply", &Internals::apply);

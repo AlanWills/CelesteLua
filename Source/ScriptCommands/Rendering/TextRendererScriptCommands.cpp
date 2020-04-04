@@ -1,6 +1,7 @@
-#include "Lua/ScriptCommands/Rendering/TextRendererScriptCommands.h"
-#include "UtilityHeaders/ScriptCommandHeaders.h"
+#include "ScriptCommands/Rendering/TextRendererScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Rendering/TextRenderer.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -12,9 +13,10 @@ namespace sol
 namespace Celeste::Lua::Rendering::TextRendererScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<Celeste::Rendering::TextRenderer>(
+      state,
       Celeste::Rendering::TextRenderer::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "setText", &Celeste::Rendering::TextRenderer::setText);

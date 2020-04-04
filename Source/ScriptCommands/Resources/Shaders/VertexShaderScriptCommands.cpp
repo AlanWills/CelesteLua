@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/Resources/Shaders/VertexShaderScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Resources/Shaders/VertexShaderScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Resources/Shaders/VertexShader.h"
 
@@ -15,9 +15,10 @@ namespace sol
 namespace Celeste::Lua::Resources::VertexShaderScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<VertexShader>(
+      state,
       "VertexShader",
       sol::base_classes, sol::bases<Celeste::Resources::Resource, Object>());
   }

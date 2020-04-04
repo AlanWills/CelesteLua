@@ -1,13 +1,13 @@
-#include "Lua/ScriptCommands/Resources/ResourcesScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/2D/Texture2DScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/3D/ModelScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Audio/SoundScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Data/DataScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Data/PrefabScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Fonts/FontScriptCommands.h"
-#include "Lua/ScriptCommands/Resources/Shaders/ShaderScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Resources/ResourcesScriptCommands.h"
+#include "ScriptCommands/Resources/2D/Texture2DScriptCommands.h"
+#include "ScriptCommands/Resources/3D/ModelScriptCommands.h"
+#include "ScriptCommands/Resources/Audio/SoundScriptCommands.h"
+#include "ScriptCommands/Resources/Data/DataScriptCommands.h"
+#include "ScriptCommands/Resources/Data/PrefabScriptCommands.h"
+#include "ScriptCommands/Resources/Fonts/FontScriptCommands.h"
+#include "ScriptCommands/Resources/Shaders/ShaderScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Resources/ResourceUtils.h"
 #include "Resources/ResourceManager.h"
@@ -181,9 +181,8 @@ namespace Celeste::Lua::Resources::ScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = LuaState::instance();
     sol::table resourcesTable = state.create_named_table("Resources");
 
     resourcesTable["getResourcesDirectory"] = &Internals::getResourcesDirectory;
@@ -218,12 +217,12 @@ namespace Celeste::Lua::Resources::ScriptCommands
     resourcesTable["unloadAllModels"] = &Internals::unloadAllModels;
     resourcesTable["unloadAllResources"] = &Internals::unloadAllResources;
 
-    Resources::Texture2DScriptCommands::initialize();
-    Resources::ModelScriptCommands::initialize();
-    Resources::Audio::SoundScriptCommands::initialize();
-    Resources::DataScriptCommands::initialize();
-    Resources::PrefabScriptCommands::initialize();
-    Resources::FontScriptCommands::initialize();
-    Resources::ShaderScriptCommands::initialize();
+    Resources::Texture2DScriptCommands::initialize(state);
+    Resources::ModelScriptCommands::initialize(state);
+    Resources::Audio::SoundScriptCommands::initialize(state);
+    Resources::DataScriptCommands::initialize(state);
+    Resources::PrefabScriptCommands::initialize(state);
+    Resources::FontScriptCommands::initialize(state);
+    Resources::ShaderScriptCommands::initialize(state);
   }
 }

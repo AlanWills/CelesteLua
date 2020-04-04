@@ -1,7 +1,10 @@
 #pragma once
 
-#include "CelesteDllExport.h"
 
+namespace sol
+{
+  class state;
+}
 
 namespace Celeste
 {
@@ -12,15 +15,15 @@ namespace Celeste
 
   namespace Lua::Audio::ScriptCommands
   {
-    CelesteDllExport void initialize();
+    void initialize(sol::state& state);
 
-    CelesteDllExport float getMasterVolume();
-    CelesteDllExport void setMasterVolume(float masterVolume);
+    float getMasterVolume();
+    void setMasterVolume(float masterVolume);
 
-    CelesteDllExport float getMusicVolume();
-    CelesteDllExport void setMusicVolume(float musicVolume);
+    float getMusicVolume();
+    void setMusicVolume(float musicVolume);
 
-    CelesteDllExport float getSFXVolume();
-    CelesteDllExport void setSFXVolume(float sfxVolume);
+    float getSFXVolume();
+    void setSFXVolume(float sfxVolume);
   }
 }

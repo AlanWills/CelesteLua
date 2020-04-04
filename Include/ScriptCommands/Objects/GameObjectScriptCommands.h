@@ -1,7 +1,6 @@
 #pragma once
 
-#include "CelesteDllExport.h"
-#include "Lua/LuaState.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste
@@ -10,10 +9,9 @@ namespace Celeste
 
   namespace Lua::GameObjectScriptCommands
   {
-    CelesteDllExport void initialize();
+    void initialize(sol::state& state);
   }
 }
-
 
 namespace sol
 {

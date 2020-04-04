@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Events/EventTriggererScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Events/EventTriggererScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Deserialization/InputDeserializers.h"
 #include "Serialization/InputSerializers.h"
@@ -79,11 +79,12 @@ namespace Celeste::Lua::Events::EventTriggererScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using EventTriggerer = Celeste::Events::EventTriggerer;
 
     registerUserType<EventTriggerer>(
+      state,
       EventTriggerer::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "getTriggerDelay", &EventTriggerer::getTriggerDelay,

@@ -1,5 +1,5 @@
-#include "Lua/ScriptCommands/XML/tinyxml2ScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/XML/tinyxml2ScriptCommands.h"
+#include "sol/sol.hpp"
 #include "tinyxml2.h"
 
 #include <memory>
@@ -35,10 +35,8 @@ namespace Celeste::Lua::XML::tinyxml2ScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::state& state = Lua::LuaState::instance();
-
     using namespace tinyxml2;
 
     state.new_usertype<XMLDocument>(

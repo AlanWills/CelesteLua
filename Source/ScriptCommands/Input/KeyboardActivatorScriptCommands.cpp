@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Input/KeyboardActivatorScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Input/KeyboardActivatorScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Deserialization/InputDeserializers.h"
 #include "Serialization/InputSerializers.h"
@@ -89,11 +89,12 @@ namespace Celeste::Lua::Input::KeyboardActivatorScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     using KeyboardActivator = Celeste::Input::KeyboardActivator;
 
     registerUserType<KeyboardActivator>(
+      state,
       KeyboardActivator::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "getActivationKey", &Internals::getActivationKey,

@@ -1,6 +1,6 @@
-#include "Lua/ScriptCommands/Physics/EllipseColliderScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Physics/EllipseColliderScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
+#include "sol/sol.hpp"
 
 #include "Physics/EllipseCollider.h"
 
@@ -63,9 +63,10 @@ namespace Celeste::Lua::Physics::EllipseColliderScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<EllipseCollider>(
+      state,
       EllipseCollider::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
       "getDimensions", &EllipseCollider::getDimensions,

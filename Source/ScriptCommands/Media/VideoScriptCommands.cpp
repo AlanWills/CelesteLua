@@ -1,6 +1,4 @@
-#include "Lua/ScriptCommands/Media/VideoScriptCommands.h"
-#include "Lua/LuaState.h"
-
+#include "ScriptCommands/Media/VideoScriptCommands.h"
 #include "Media/Video.h"
 
 
@@ -27,9 +25,9 @@ namespace Celeste::Lua::Media::VideoScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    sol::table videoTable = LuaState::instance().create_named_table("Video");
+    sol::table videoTable = state.create_named_table("Video");
     videoTable.set_function("play", &Internals::play);
     videoTable.set_function("playAsync", &Internals::playAsync);
   }

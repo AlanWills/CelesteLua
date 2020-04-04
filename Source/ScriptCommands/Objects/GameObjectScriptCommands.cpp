@@ -1,10 +1,11 @@
-#include "Lua/ScriptCommands/Objects/GameObjectScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
+#include "ScriptCommands/Objects/GameObjectScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 
 #include "Registries/ComponentRegistry.h"
 #include "Rendering/Renderer.h"
 #include "Scene/SceneUtils.h"
 #include "Scene/SceneManager.h"
+#include "Lua/LuaState.h"
 
 
 namespace sol
@@ -70,9 +71,10 @@ namespace Celeste::Lua::GameObjectScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
     registerUserType<GameObject>(
+      state,
       "GameObject",
       sol::base_classes, sol::bases<Entity, Object>(),
       "getName", &Internals::getName,

@@ -1,7 +1,7 @@
-#include "Lua/ScriptCommands/Objects/EntityScriptCommands.h"
-#include "Lua/ScriptCommands/ScriptCommandUtils.h"
-
+#include "ScriptCommands/Objects/EntityScriptCommands.h"
+#include "ScriptCommands/ScriptCommandUtils.h"
 #include "Objects/Entity.h"
+#include "sol/sol.hpp"
 
 
 namespace sol
@@ -22,9 +22,11 @@ namespace Celeste::Lua::EntityScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    registerUserType<Entity>("Entity",
+    registerUserType<Entity>(
+      state,
+      "Entity",
       sol::base_classes, sol::bases<Object>(),
       "destroy", &Internals::destroy,
       "isActive", &Entity::isActive,

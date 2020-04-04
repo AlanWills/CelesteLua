@@ -1,17 +1,17 @@
-#include "Lua/ScriptCommands/Rendering/RenderingScriptCommands.h"
-#include "Lua/ScriptCommands/Rendering/CanvasScriptCommands.h"
-#include "Lua/ScriptCommands/Rendering/TextRendererScriptCommands.h"
-#include "Lua/ScriptCommands/Rendering/SpriteRendererScriptCommands.h"
-#include "Lua/LuaState.h"
+#include "ScriptCommands/Rendering/RenderingScriptCommands.h"
+#include "ScriptCommands/Rendering/CanvasScriptCommands.h"
+#include "ScriptCommands/Rendering/TextRendererScriptCommands.h"
+#include "ScriptCommands/Rendering/SpriteRendererScriptCommands.h"
+#include "sol/sol.hpp"
 
 
 namespace Celeste::Lua::Rendering::ScriptCommands
 {
   //------------------------------------------------------------------------------------------------
-  void initialize()
+  void initialize(sol::state& state)
   {
-    CanvasScriptCommands::initialize();
-    TextRendererScriptCommands::initialize();
-    SpriteRendererScriptCommands::initialize();
+    CanvasScriptCommands::initialize(state);
+    TextRendererScriptCommands::initialize(state);
+    SpriteRendererScriptCommands::initialize(state);
   }
 }
