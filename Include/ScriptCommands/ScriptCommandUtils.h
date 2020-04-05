@@ -2,7 +2,7 @@
 
 #include "Objects/ScriptableObject.h"
 #include "Objects/Object.h"
-
+#include "Lua/LuaState.h"
 #include "sol/sol.hpp"
 
 
@@ -19,9 +19,9 @@ namespace Celeste::Lua
 
     //------------------------------------------------------------------------------------------------
     template <typename T>
-    sol::object as(sol::state& state, T* object, const std::string& typeName)
+    sol::object as(T* object, const std::string& typeName)
     {
-      sol::table typeTable = state[typeName].get_or<sol::table>(sol::nil);
+      sol::table typeTable = Celeste::Lua::LuaState::instance()[typeName].get_or<sol::table>(sol::nil);
       if (!typeTable.valid())
       {
         return sol::nil;
