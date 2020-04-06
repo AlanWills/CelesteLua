@@ -29,7 +29,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Include)
 target_link_libraries(${PROJECT_NAME} PUBLIC
-    sol2
+    Lua
     DolceLua
     Celeste)
 

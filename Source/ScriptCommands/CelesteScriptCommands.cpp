@@ -55,6 +55,9 @@ namespace Celeste::Lua::CelesteScriptCommands
 
 #if _DEBUG
     Dolce::Lua::ScriptCommands::initialize(state, Debug::getDolce());
+
+    // Move to DolceLua when we have separate package containing LuaState
+    LuaState::requireModule("Debug.DolceWindows");
 #endif
   }
 }
