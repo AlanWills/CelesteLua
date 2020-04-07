@@ -1,6 +1,6 @@
 #include "ScriptCommands/CoreScriptCommands.h"
 #include "Game/Game.h"
-#include "Debug/Assert.h"
+#include "Assert/Assert.h"
 #include "Lua/LuaState.h"
 
 

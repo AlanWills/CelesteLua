@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UtilityHeaders/LuaHeaders.h"
+#include "Lua/LuaHeaders.h"
 
 
 namespace sol
