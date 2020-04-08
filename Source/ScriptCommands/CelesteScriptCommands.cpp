@@ -12,6 +12,7 @@
 #include "ScriptCommands/Input/InputScriptCommands.h"
 #include "ScriptCommands/Objects/ObjectScriptCommands.h"
 #include "ScriptCommands/DataConverters/DataConverterScriptCommands.h"
+#include "ScriptCommands/Time/TimeScriptCommands.h"
 #include "ScriptCommands/Viewport/ViewportScriptCommands.h"
 #include "ScriptCommands/UI/UIScriptCommands.h"
 #include "ScriptCommands/XML/XMLScriptCommands.h"
@@ -52,6 +53,7 @@ namespace Celeste::Lua::CelesteScriptCommands
     Lua::UI::ScriptCommands::initialize(state);
     Lua::Events::ScriptCommands::initialize(state);
     Lua::LuaComponentManifestRegistryScriptCommands::initialize(state);
+    Lua::Time::ScriptCommands::initialize(state);
 
 #if _DEBUG
     Dolce::Lua::ScriptCommands::initialize(state, Debug::getDolce());
