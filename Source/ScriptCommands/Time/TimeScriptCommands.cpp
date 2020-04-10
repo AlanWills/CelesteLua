@@ -19,6 +19,6 @@ namespace Celeste::Lua::Time::ScriptCommands
   void initialize(sol::state& state)
   {
     sol::table timeTable = state.create_named_table("Time");
-    timeTable["deltaTime"] = &Internals::getDeltaTime;
+    timeTable["getDeltaTime"] = &Internals::getDeltaTime;
   }
 }
