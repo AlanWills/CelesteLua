@@ -13,7 +13,7 @@ namespace TestCelesteLua
   std::unique_ptr<Game> game(nullptr);
 
   //------------------------------------------------------------------------------------------------
-  TEST_MODULE_INITIALIZE(TestCeleste_Initialize)
+  TEST_MODULE_INITIALIZE(TestCelesteLua_Initialize)
   {
     // Issues with unique_ptrs over dll boundaries so have to do this in the test project
     Assertion::setAsserter(std::make_unique<NullAsserter>());
