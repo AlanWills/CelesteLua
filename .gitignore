@@ -15,7 +15,10 @@
 *Log.txt
 *Profiler.txt
 
-# Dolce Files
+# Test files
+[Tt]emp/
+
+# Dolce files
 *imgui.ini
 
 # MCF files

@@ -3,4 +3,9 @@ set(LIBS
     DolceLua
     Celeste)
 
-build_library(NAME CelesteLua FOLDER Celeste/Lua TYPE STATIC LIBS "${LIBS}")
+set(TEST_LIBS
+    CelesteMocks
+    CelesteTestResources
+    CelesteTestUtils)
+
+build_library(NAME CelesteLua FOLDER Celeste TYPE STATIC LIBS "${LIBS}" TEST_LIBS "${TEST_LIBS}")

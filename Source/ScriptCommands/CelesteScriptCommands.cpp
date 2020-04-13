@@ -32,7 +32,7 @@ namespace Celeste::Lua::CelesteScriptCommands
   //------------------------------------------------------------------------------------------------
   void initialize(sol::state& state)
   {
-    // Update lua path to ensure all engine scripts will be found
+    // Update lua path to ensure scripts in resources directory will be found will be found
     Lua::LuaState::appendToLuaPackagePath(Path(Celeste::Resources::getResourcesDirectory(), "Scripts", "?.lua;"));
 
     // Now initialize all lua scripts and API
