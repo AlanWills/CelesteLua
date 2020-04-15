@@ -16,7 +16,7 @@ using namespace Celeste;
 using namespace Celeste::Input;
 
 
-namespace TestCeleste::Lua::Input::KeyboardVisibilityScriptCommands
+namespace TestCelesteLua::Lua::Input::KeyboardVisibilityScriptCommands
 {
   CELESTE_TEST_CLASS(TestKeyboardVisibilityScriptCommands)
 

@@ -11,7 +11,7 @@
 using LuaState = Celeste::Lua::LuaState;
 
 
-namespace TestCeleste
+namespace TestCelesteLua
 {
   namespace Lua
   {

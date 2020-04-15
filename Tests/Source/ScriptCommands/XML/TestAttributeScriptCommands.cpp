@@ -11,7 +11,7 @@ using namespace Celeste;
 using LuaState = Celeste::Lua::LuaState;
 
 
-namespace TestCeleste::Lua::XML::AttributeScriptCommands
+namespace TestCelesteLua::Lua::XML::AttributeScriptCommands
 {
 #pragma region Dummy Data Converter Classes
 

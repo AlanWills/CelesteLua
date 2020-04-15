@@ -10,7 +10,7 @@ using LuaState = Celeste::Lua::LuaState;
 using LuaComponentManifestRegistry = Celeste::Lua::LuaComponentManifestRegistry;
 
 
-namespace TestCeleste
+namespace TestCelesteLua
 {
   namespace Lua
   {

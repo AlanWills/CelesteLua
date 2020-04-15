@@ -13,7 +13,7 @@ using LuaState = Celeste::Lua::LuaState;
 using GameSettings = Settings::GameSettings;
 
 
-namespace TestCeleste::Lua::GameSettingsScriptCommands
+namespace TestCelesteLua::Lua::GameSettingsScriptCommands
 {
   CELESTE_TEST_CLASS(TestGameSettingsScriptCommands)
 

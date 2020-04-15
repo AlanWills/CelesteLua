@@ -15,7 +15,7 @@ using namespace Celeste;
 using namespace Celeste::Audio;
 
 
-namespace TestCeleste::Lua::Audio::AudioSourceScriptCommands
+namespace TestCelesteLua::Lua::Audio::AudioSourceScriptCommands
 {
   CELESTE_TEST_CLASS(TestAudioSourceScriptCommands)
 

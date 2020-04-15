@@ -14,7 +14,7 @@ using ProgressBar = Celeste::UI::ProgressBar;
 using namespace Celeste;
 
 
-namespace TestCeleste::Lua::UI::ProgressBarScriptCommands
+namespace TestCelesteLua::Lua::UI::ProgressBarScriptCommands
 {
   CELESTE_TEST_CLASS(TestProgressBarScriptCommands)
 

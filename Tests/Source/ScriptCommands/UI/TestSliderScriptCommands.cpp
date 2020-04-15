@@ -15,7 +15,7 @@ using namespace Celeste;
 using namespace Celeste::Rendering;
 
 
-namespace TestCeleste::Lua::UI::SliderScriptCommands
+namespace TestCelesteLua::Lua::UI::SliderScriptCommands
 {
   CELESTE_TEST_CLASS(TestSliderScriptCommands)
 

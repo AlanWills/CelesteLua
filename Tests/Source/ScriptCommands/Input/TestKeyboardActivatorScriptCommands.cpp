@@ -15,7 +15,7 @@ using namespace Celeste;
 using namespace Celeste::Input;
 
 
-namespace TestCeleste::Lua::Input::KeyboardActivatorScriptCommands
+namespace TestCelesteLua::Lua::Input::KeyboardActivatorScriptCommands
 {
   CELESTE_TEST_CLASS(TestKeyboardActivatorScriptCommands)
 

@@ -13,7 +13,7 @@ using namespace Celeste::Lua;
 using namespace Celeste::Input;
 
 
-namespace TestCeleste::Lua::ScriptCommands
+namespace TestCelesteLua::Lua::ScriptCommands
 {
   CELESTE_TEST_CLASS(TestMouseInteractionHandlerScriptCommands)
 
