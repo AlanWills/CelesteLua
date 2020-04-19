@@ -23,7 +23,7 @@
 
 #if _DEBUG
 #include "Debug/DolceUtils.h"
-#include "ScriptCommands/DolceScriptCommands.h"
+//#include "ScriptCommands/DolceScriptCommands.h"
 #endif
 
 
@@ -56,7 +56,7 @@ namespace Celeste::Lua::CelesteScriptCommands
     Lua::Time::ScriptCommands::initialize(state);
 
 #if _DEBUG
-    Dolce::Lua::ScriptCommands::initialize(state, Debug::getDolce());
+    //Dolce::Lua::ScriptCommands::initialize(state, Debug::getDolce());
 #endif
   }
 }

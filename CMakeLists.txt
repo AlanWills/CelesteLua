@@ -1,6 +1,6 @@
 set(LIBS 
-    Lua
-    DolceLua
+    #Lua
+    #DolceLua
     Celeste)
 
 set(TEST_LIBS
