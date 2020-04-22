@@ -34,6 +34,30 @@ namespace TestCelesteLua::Lua::Rendering::SpriteRendererScriptCommands
   }
 
   //------------------------------------------------------------------------------------------------
+  TEST_METHOD(SpriteRendererScriptCommands_Initialize_Adds_getDimensions_ToSpriteRendererTable)
+  {
+    sol::state& state = LuaState::instance();
+
+    Assert::IsFalse(state.globals()["SpriteRenderer"]["getDimensions"].valid());
+
+    Celeste::Lua::Rendering::SpriteRendererScriptCommands::initialize(state);
+
+    Assert::IsTrue(state.globals()["SpriteRenderer"]["getDimensions"].valid());
+  }
+
+  //------------------------------------------------------------------------------------------------
+  TEST_METHOD(SpriteRendererScriptCommands_Initialize_Adds_setDimensions_ToSpriteRendererTable)
+  {
+    sol::state& state = LuaState::instance();
+
+    Assert::IsFalse(state.globals()["SpriteRenderer"]["setDimensions"].valid());
+
+    Celeste::Lua::Rendering::SpriteRendererScriptCommands::initialize(state);
+
+    Assert::IsTrue(state.globals()["SpriteRenderer"]["setDimensions"].valid());
+  }
+
+  //------------------------------------------------------------------------------------------------
   TEST_METHOD(SpriteRendererScriptCommands_Initialize_Adds_setTexture_ToSpriteRendererTable)
   {
     sol::state& state = LuaState::instance();
@@ -67,6 +91,50 @@ namespace TestCelesteLua::Lua::Rendering::SpriteRendererScriptCommands
     Celeste::Lua::Rendering::SpriteRendererScriptCommands::initialize(state);
 
     Assert::IsTrue(state.globals()["SpriteRenderer"]["as"].valid());
+  }
+
+#pragma endregion
+
+#pragma region Get Dimensions Tests
+
+  //------------------------------------------------------------------------------------------------
+  TEST_METHOD(SpriteRendererScriptCommands_getDimensions_ReturnsCorrectDimensions)
+  {
+    GameObject gameObject;
+    SpriteRenderer spriteRenderer(gameObject);
+    spriteRenderer.setDimensions(100, 200);
+
+    Assert::AreEqual(glm::vec2(100, 200), spriteRenderer.getDimensions());
+
+    sol::state& state = LuaState::instance();
+    Celeste::Lua::Rendering::SpriteRendererScriptCommands::initialize(state);
+
+    auto result = state[SpriteRenderer::type_name()]["getDimensions"].get<sol::protected_function>().call(spriteRenderer);
+
+    Assert::IsTrue(result.valid());
+    Assert::AreEqual(glm::vec2(100, 200), result.get<glm::vec2>());
+  }
+
+#pragma endregion
+
+#pragma region Set Dimensions Tests
+
+  //------------------------------------------------------------------------------------------------
+  TEST_METHOD(SpriteRendererScriptCommands_setDimensions_UpdatesDimensions)
+  {
+    GameObject gameObject;
+    SpriteRenderer spriteRenderer(gameObject);
+    spriteRenderer.setDimensions(100, 200);
+
+    Assert::AreEqual(glm::vec2(100, 200), spriteRenderer.getDimensions());
+
+    sol::state& state = LuaState::instance();
+    Celeste::Lua::Rendering::SpriteRendererScriptCommands::initialize(state);
+
+    auto result = state[SpriteRenderer::type_name()]["setDimensions"].get<sol::protected_function>().call(spriteRenderer, 300, 400);
+
+    Assert::IsTrue(result.valid());
+    Assert::AreEqual(glm::vec2(300, 400), spriteRenderer.getDimensions());
   }
 
 #pragma endregion

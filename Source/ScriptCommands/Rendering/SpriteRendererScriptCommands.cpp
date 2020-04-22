@@ -17,6 +17,12 @@ namespace Celeste::Lua::Rendering::SpriteRendererScriptCommands
   namespace Internals
   {
     //------------------------------------------------------------------------------------------------
+    void setDimensions_TwoFloatsOverload(SpriteRenderer& spriteRenderer, float width, float height)
+    {
+      spriteRenderer.setDimensions(width, height);
+    }
+
+    //------------------------------------------------------------------------------------------------
     void setTexture_HandleOverload(SpriteRenderer& spriteRenderer, observer_ptr<Celeste::Resources::Texture2D> texture)
     {
       spriteRenderer.setTexture(texture);
@@ -42,6 +48,8 @@ namespace Celeste::Lua::Rendering::SpriteRendererScriptCommands
       state,
       SpriteRenderer::type_name(),
       sol::base_classes, sol::bases<Component, Entity, Object>(),
+      "getDimensions", &SpriteRenderer::getDimensions,
+      "setDimensions", &Internals::setDimensions_TwoFloatsOverload,
       "setTexture", sol::overload(&Internals::setTexture_HandleOverload, &Internals::setTexture_StringOverload),
       "setColour", &Internals::setColour_ThreeFloatsOverload);
   }
